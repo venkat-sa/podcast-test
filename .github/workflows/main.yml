@@ -24,7 +24,7 @@ jobs:
         run: |
           git config --local user.email "abc@abc.com"
           git config --local user.name "github"
-          git commit -a -m "Add changes"
+          git commit -a -m "Add changes" || echo "Commit error"
       - name: Push Repo
         uses: ad-m/github-push-action@master
         with:
