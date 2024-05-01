@@ -21,11 +21,7 @@ jobs:
       - name: Run Feed Generator
         run: python feed.py
       - name: Push Repo
-        run: |
-            git config --global user.name "github-actions"
-            git config --global user.email "github-actions@github.com"
-             with:
-              token: '${{ secrets.GITHUB_TOKEN }}'
-            git add .
-            git commit -m "Modified Feed"
-            git push
+        uses: ad-m/github-push-action@master
+        with:
+            github_token: ${{secrets.GITHUB_TOKEN}}
+            branch: ${{ github.ref}}
