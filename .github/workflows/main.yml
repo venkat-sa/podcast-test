@@ -20,18 +20,12 @@ jobs:
           pip install pyyaml
       - name: Run Feed Generator
         run: python feed.py
-
-
-
-  git:
-      runs-on: ubuntu-latest
-      steps:
-        - name: set git config
-          env:
-            GH_TOKEN: ${{ github.token }}
-          run: |
+      - name: Push Repo
+        run: |
             git config --global user.name "github-actions"
             git config --global user.email "github-actions@github.com"
+             with:
+              token: '${{ secrets.GITHUB_TOKEN }}'
             git add .
             git commit -m "Modified Feed"
             git push
