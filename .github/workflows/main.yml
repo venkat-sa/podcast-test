@@ -1,5 +1,9 @@
 name: Generate Podcast Feeds
-on: [push]
+on: 
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,8 +20,9 @@ jobs:
           pip install pyyaml
       - name: Run Feed Generator
         run: python feed.py
-   
-       
+
+
+
   git:
       runs-on: ubuntu-latest
       steps:
