@@ -20,6 +20,11 @@ jobs:
           pip install pyyaml
       - name: Run Feed Generator
         run: python feed.py
+      - name: Commit files
+        run: |
+          git config user.email "abc@abc.com"
+          git config user.name "github"
+          git commit -a -m "Add changes"
       - name: Push Repo
         uses: ad-m/github-push-action@master
         with:
